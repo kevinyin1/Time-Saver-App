@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Ekko Timer - Home</title>
+    </head>
+    <body>
+        <!-- logo below -->
+        <img src="img/logo_.png" class="center" alt="logo" id="logo">
+        <!-- end logo -->
+        <!-- navigation -->
+        <button class="center index-btn index-btn-color-1" onclick="window.location.href='assignments.html'">Assignments</button>
+        <button class="center index-btn index-btn-color-2" onclick="window.location.href='calendar.html'">Calendar</button>
+        <button class="center index-btn index-btn-color-1 dropbtn" onclick="dropdown()">Create</button>
+        <!-- dropdown menu below -->
+        <div id="dropdown" class="dropdown-content">
+            <a href="create-assignment.html">Create Assignment</a>
+            <a href="create-event.html">Create Event</a>
+        </div>
+        <!-- dropdown end menu -->
+        <button class="center index-btn index-btn-color-2" onclick="window.location.href='events.html'">Events</button>
+        <!-- end navigation -->
+        <script>
+            //dropdown for the create menu
+            function dropdown(){
+                document.getElementById('dropdown').classList.toggle('show');
+            }
+            window.onclick = function(event){
+                if (!event.target.matches('.dropbtn')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/events.css">
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+        <script src="js/firebase.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/mustache.js"></script>
+        <title>Ekko Timer - Events</title>
+    </head>
+    <body>
+        <!-- navigation -->
+        <div class="nav-bar">
+            <button class="nav-bar-btn" onclick="changetoIndex()">Back</button>
+            <img src="img/logo_.png" class="logo center" alt="logo">
+        </div>
+        <h2 class="text-cen">Events</h2>
+        <div id="output">
+            <!-- output is displayed here -->
+        </div>
+        <script>
+            $('.nav-bar-btn').css('background-color', '#DEE79A'); //changes the back button's college on this page.
+            //job -> calls a function in the firebase.js file, pulls from database, and display built code in the output divider.
+            pullEvents();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+body{
+    background-color: #DEE79A;
+}
+hr{
+    border-color:#000;
+}
+.delete-event{
+    background-color: #DEE79A;
+    border-radius:none;
+    padding:5px 7px;
+    border-color: #000;
+}

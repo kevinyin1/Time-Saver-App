@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/assignments.css">
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+        <title>Ekko Timer - Assignments</title>
+        <script src="js/firebase.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/mustache.js"></script>
+    </head>
+    <body>
+        <!-- navigation -->
+        <div class="nav-bar">
+            <button class="nav-bar-btn" onclick="changetoIndex()">Back</button>
+            <img src="img/logo_.png" class="logo center" alt="logo">
+        </div>
+        <!-- end navigation -->
+        <!-- this div is the output for the code built in the firebase.js file. -->
+        <div id="output">
+
+        </div>
+        <!-- end -->
+        <script>
+
+            $('.nav-bar-btn').css('background-color', '#E0BBF1');  //sets the back button's color
+            pullAssignments(); //calls to the function in the firebase.js file to pull the assignments from the database and builds the code in the output divider
+        </script>
+    </body>
+</html>

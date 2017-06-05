@@ -1,0 +1,12 @@
+body{
+    background-color: #E0BBF1;
+}
+hr{
+    border-color:#000;
+}
+.delete-assignment{
+    border-radius:none;
+    padding:5px 7px;
+    background-color: #E0BBF1;
+    border-color: #000;
+}

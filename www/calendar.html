@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="css/ionicons.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/calendar.css">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+        <script src="js/mustache.js"></script>
+        <script src="js/firebase.js"></script>
+        <script src="js/calendar.js"></script>
+        <title>Ekko Timer - Calendar</title>
+    </head>
+    <body>
+        <!-- navigation -->
+        <div class="nav-bar">
+            <button class="nav-bar-btn" onclick="changetoIndex()">Back</button>
+            <img src="img/logo_.png" class="logo center" alt="logo">
+        </div>
+        <!-- end navigation -->
+
+        <!-- Calendar -->
+        <table>
+            <thead>
+                <tr>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>T</td>
+                    <td>W</td>
+                    <td>R</td>
+                    <td>F</td>
+                    <td>S</td>
+                </tr>
+            </thead>
+            <h1 id="title">Calendar</h1>
+            <h2 id="month">June</h2>
+            <!-- output of calendar code -->
+            <tbody id="calendar-output">
+            </tbody>
+            <!-- end output of calendar code -->
+        </table>
+        <script>
+
+            $('.nav-bar-btn').css('background-color', "#d2e8bc"); //set the background color of the back button
+            var today = new Date(); //records today's date
+            var year = today.getFullYear().toString();//get the current year
+            var calendar_offset = 4; //determines what day does it start on
+            var daycount = 1;//instantiate the starting date
+            var output = "";//instantiate the output code
+            var input_date = ""; //instantiate the test date
+            for (var weeks = 0; weeks < 5; weeks++){ //loop for number of weeks in a month
+                output += "<tr>" //begins the build of the calendar with a <tr> tag
+                /*
+                    **  PLEASE NOTE_ THE CALENDAR IS BUILT WITH A TABLE. THE TABLE IS CUSTOMIZED WITH CSS TO MAKE IT LOOK LIKE
+                    A CALENDAR **
+                */
+                for (var days = 0; days < 7; days++){ //loop for the number of days in a week
+                    if (calendar_offset > 0){ //decides what day of the first week of the month to start on
+                        output += "<td> </td>";
+                        calendar_offset--; //decreases the offset variable
+                    }
+                    else{
+                        if (daycount < 10){ //condition just for testing measures IGNORE UNDER DEVELOPMENT
+                            input_date = insertString('%s-%s-%s',[year,'06','0'+daycount.toString()]);
+                            output += "<td value="+input_date+">"+daycount+check_(input_date)+"</td>";//builds the variable output with code
+                        }
+                        else { //condition just for testing measures IGNORE UNDER DEVELOPMENT
+                            input_date = insertString('%s-%s-%s',[year,'06',daycount.toString()]);
+                            output += "<td value="+input_date+">"+daycount+check_(input_date)+"</td>";//builds the variable output with code
+                        }
+                        daycount++; //increases the daycount as each day of month is created e.g. day 1, day 2, day 3.....
+                    }
+                    if (daycount == 31){ //checks if the daycount has reached the max number of days in the month
+                                        // if reached, the loop will be terminated: stop the loop.
+                        break;
+                    }
+                }
+                output += "</tr>"; //end the building of the variable output code
+            }
+            document.getElementById('calendar-output').innerHTML = output; //inputs the code into the build tbody (look above and search for id="calendar-output")
+
+            function insertString(template, values) { //function I created to build a string by passing a template and values to a function.
+                                                    // made it similar to the python %s string functionality
+              return template.replace(/%s/g, function() {
+                return values.shift();
+              });
+            }
+
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <!-- end calendar -->
+    </body>
+
+</html>

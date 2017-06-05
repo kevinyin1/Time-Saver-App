@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/create.css">
+        <title>Ekko Timer - Create Event</title>
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/firebase.js"></script>
+    </head>
+     <body style="background-color:#FBD86E"> <!-- style in the tag to the left sets the background color -->
+        <!-- navigation -->
+        <div class="nav-bar">
+            <button class="nav-bar-btn" onclick="changetoIndex()">Back</button> <!-- calls for the changetoIndex() function in firebase.js file.
+                Purpose: to redirect the user to the home page -->
+            <img src="img/logo_.png" class="logo center" alt="logo">
+        </div>
+        <!-- end -->
+        <div>
+            <!-- create a new event form -->
+            <h2 class="text-cen">Create New Event</h2>
+            <form id="create-form">
+                Title:
+                <input id="title" class="create-input" type="text" placeholder="Please Enter Title" required><br> <!-- class="create-input" is a style. Check the create.css file -->
+                Date:
+                <input id="date" class="create-input" type="date" placeholder="Please Enter Date" required><br>
+                Time:
+                <input id="time" class="create-input" type="time" placeholder="Please Enter Time" required><br>
+                Location:
+                <input id="location" class="create-input" type="text" placeholder="Please Enter Location" required><br>
+                Notes:<br>
+                <textarea id="notes" rows="4" cols="50" required></textarea><br>
+                <input type="button" value="Submit" onclick="post()"> <!-- submit button is to the left -->
+            </form>
+            <!-- end event form -->
+        </div>
+    </body>
+    <script>
+        $('.nav-bar-btn').css("background-color", "#FBD86E"); //changes the back button's background color
+        var date, time, location_, title, notes; //instantiate the variables
+        //below is the post function. This function mainly takes the information from the inputs or text boxes and pass it to the createEvents() function in the
+        //firebase.js file. Refer to the comments in the firebase.js file for more information on the createEvents() function.
+        function post(){
+            title = document.getElementById('title').value;
+            date  = document.getElementById('date').value;
+            time =  document.getElementById('time').value;
+            location_ = document.getElementById('location').value;
+            notes = document.getElementById('notes').value;
+            createEvents(title, date, time, location_, notes);
+            //this function below helps redirect the user to the home page after creating the event
+            //it is delayed by 1000 miliseconds or 1 second to ensure creation of event
+            setTimeout(function(){
+                window.location.href = "index.html";
+            }, 1000);
+        }
+    </script>
+</html>
